@@ -28,6 +28,10 @@
     <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> messages were blocked</string>
     <string name="unblock_number">Unblock</string>
 
+    <!-- Mms Breath -->
+    <string name="mms_breath">Breathing SMS</string>
+    <string name="mms_breath_summary">Will give your statusbar notifications a breathing effect</string>
+
     <!-- Blacklist management -->
     <string name="add_to_blacklist">Add to blacklist</string>
     <string name="add_to_blacklist_message">Future messages from %s will be blocked</string>

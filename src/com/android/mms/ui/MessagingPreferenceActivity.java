@@ -89,8 +89,9 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String NOTIFICATION_VIBRATE_PATTERN = "pref_key_mms_notification_vibrate_pattern";
     public static final String NOTIFICATION_VIBRATE_PATTERN_CUSTOM = "pref_key_mms_notification_vibrate_pattern_custom";
     public static final String NOTIFICATION_VIBRATE_CALL ="pref_key_mms_notification_vibrate_call";
-
-    // Privacy mode
+    public static final String MMS_BREATH               = "mms_breath";
+    
+// Privacy mode
     public static final String PRIVACY_MODE_ENABLED = "pref_key_enable_privacy_mode";
 
     // Keyboard input type
@@ -142,6 +143,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     private Preference mManageTemplate;
     private ListPreference mGestureSensitivity;
     private static final int CONFIRM_CLEAR_SEARCH_HISTORY_DIALOG = 3;
+    private CheckBoxPreference mMMSBreath;
 
     // QuickMessage
     private CheckBoxPreference mEnableQuickMessagePref;
@@ -218,6 +220,8 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         mMmsRetrievalDuringRoamingPref.setChecked(Settings.System.getInt(resolver,
                 Settings.System.MMS_AUTO_RETRIEVAL_ON_ROAMING, 0) == 1);
 
+	mMMSBreath = (CheckBoxPreference) findPreference(MMS_BREATH);
+        mMMSBreath.setChecked(mMMSBreath.isChecked());
 
         // QuickMessage
         mEnableQuickMessagePref = (CheckBoxPreference) findPreference(QUICKMESSAGE_ENABLED);
@@ -537,6 +541,9 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         } else if (preference == mEnableMultipartSMS) {
             //should be false when the checkbox is checked
             MmsConfig.setEnableMultipartSMS(!mEnableMultipartSMS.isChecked());
+
+	} else if (preference == mMMSBreath) {
+            mMMSBreath.setChecked(mMMSBreath.isChecked());
 
         } else if (preference == mEnablePrivacyModePref) {
             // Update the actual "enable private mode" value that is stored in secure settings.

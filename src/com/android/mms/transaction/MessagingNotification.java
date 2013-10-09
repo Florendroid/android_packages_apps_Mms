@@ -965,10 +965,9 @@ public class MessagingNotification {
             taskStackBuilder.addNextIntent(mostRecentNotification.mClickIntent);
         }
         // Always have to set the small icon or the notification is ignored
-        if (Settings.System.getInt(context.getContentResolver(),
-                Settings.System.MMS_BREATH, 0) == 1) {
+        if (sp.getBoolean(MessagingPreferenceActivity.MMS_BREATH, false)) {
                noti.setSmallIcon(R.drawable.stat_notify_sms_breath);
-           } else {    
+           } else {
                noti.setSmallIcon(R.drawable.stat_notify_sms);
         }
 
